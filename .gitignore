@@ -1,0 +1,15 @@
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Build / dipendenze (se in futuro servissero)
+node_modules/
+dist/
+.env
+.env.local
