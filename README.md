@@ -1,41 +1,56 @@
-# Fashion Café
+# Fashion Cafè — bozza del sito
 
-Sito vetrina per **Fashion Café**, caffetteria di specialità di giorno e cocktail bar la sera.
+Proposta visiva per il Fashion Cafè: **una pagina sola**, da mostrare al proprietario dal telefono.
+È una bozza, non un sito finito: niente backend, niente prenotazioni, niente gestionale.
 
-Pagina singola statica: nessun build step, nessuna dipendenza da installare.
-
-## Contenuti
-
-- `index.html` — struttura della pagina (hero, il locale, menu, eventi, contatti, prenotazione)
-- `assets/css/style.css` — stili, palette chiara/scura automatica, layout responsive
-- `assets/js/main.js` — menu mobile, tab del menu, stato "aperto/chiuso" in tempo reale, form prenotazione
-- `assets/img/` — immagini del locale (da popolare)
-
-## Sviluppo locale
-
-Basta aprire `index.html` nel browser. Per servirlo via HTTP:
+## Avviare il progetto
 
 ```bash
-python -m http.server 8000
-# poi apri http://localhost:8000
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # build di produzione
 ```
 
-## Personalizzazione
+Next.js 16 con App Router, TypeScript e Tailwind CSS 4. Nessuna dipendenza oltre a queste.
 
-| Cosa | Dove |
+## Dove si mettono le mani
+
+| Cosa | File |
 | --- | --- |
-| Indirizzo, telefono, email | sezione `#contatti` in `index.html` |
-| Voci e prezzi del menu | blocchi `.menu-panel` in `index.html` |
-| Eventi in programma | sezione `#eventi` in `index.html` |
-| Orari di apertura | costante `HOURS` in `assets/js/main.js` **e** tabella `.hours` in `index.html` |
-| Colori e font | variabili `:root` in `assets/css/style.css` |
+| Menu (categorie, voci, prezzi) | `content/menu.ts` |
+| Nome, frasi, eventi, contatti, orari | `content/site.ts` |
+| Colori e tipografia | `app/globals.css` |
+| Foto | `public/foto/` (sorgenti e tagli: `foto-sorgenti/README.md`) |
 
-Gli orari vivono in due punti: `HOURS` guida il badge "Aperto ora" in pagina, la tabella
-è il testo che leggono i clienti. Aggiornali insieme.
+Il menu è guidato dai dati: si aggiunge una voce in `content/menu.ts` e la pagina si
+aggiorna da sola. Nessun testo è scritto dentro i componenti.
 
-## Da fare
+## Palette
 
-- [ ] Sostituire i testi segnaposto (indirizzo, P.IVA, recapiti) con quelli reali
-- [ ] Aggiungere foto del locale in `assets/img/` e una `og:image`
-- [ ] Collegare il form prenotazione a un servizio reale (oggi è una demo lato client)
-- [ ] Pubblicare su GitHub Pages (Settings → Pages → branch `main`, cartella `/`)
+Chiara, rosa e crema. Il viola scuro è un accento (footer, titoli, pulsanti), mai il fondo.
+
+| token | valore | uso |
+| --- | --- | --- |
+| `--bianco` | `#FFF7FB` | fondo della pagina |
+| `--crema` | `#FFF1E8` | sezione "Il locale" |
+| `--rosa-chiaro` | `#F3C7D9` | chip del menu, voce in evidenza |
+| `--rosa` | `#E79AB8` | accenti |
+| `--lilla` | `#C9B4E5` | sezione eventi |
+| `--viola` | `#9C7BC0` | prezzi, link |
+| `--viola-scuro` | `#3E2B4F` | titoli, pulsanti, footer |
+
+## Da sostituire prima di pubblicare
+
+- [ ] Indirizzo, telefono, orari e Instagram in `content/site.ts` (ora sono segnaposto)
+- [ ] Voci e prezzi veri in `content/menu.ts`
+- [ ] Altre foto del locale: bancone, dolci, colazioni, il locale la sera
+- [ ] Eventi reali al posto dei due di esempio
+
+## Pubblicare su Vercel
+
+```bash
+npx vercel          # anteprima
+npx vercel --prod   # produzione
+```
+
+Vercel riconosce Next.js da solo: nessuna configurazione da aggiungere.

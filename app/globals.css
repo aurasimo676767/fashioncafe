@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/**
+ * I colori vengono dal logo, non da una palette inventata:
+ * il fucsia è campionato dal vapore, l'inchiostro dal lettering.
+ */
+:root {
+  --fucsia: #f80080;
+  --fucsia-cupo: #a30057;
+  --inchiostro: #14090f;
+  --latte: #fffbfc;
+  --cipria: #fce7f0;
+  --grigio: #6b5c64;
+  --linea: color-mix(in oklab, var(--inchiostro) 10%, transparent);
+}
+
+@theme inline {
+  --color-fucsia: var(--fucsia);
+  --color-fucsia-cupo: var(--fucsia-cupo);
+  --color-inchiostro: var(--inchiostro);
+  --color-latte: var(--latte);
+  --color-cipria: var(--cipria);
+  --color-grigio: var(--grigio);
+  --color-linea: var(--linea);
+
+  --font-sans: var(--font-figtree);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem;
+}
+
+body {
+  background-color: var(--latte);
+  color: var(--inchiostro);
+  font-family: var(--font-figtree), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* I titoli sono stretti e in minuscolo: il maiuscolo lo tiene già il logo. */
+.titolo {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--fucsia);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--fucsia);
+  color: white;
+}
+
+/* Un solo momento animato in tutta la pagina: il marchio che entra. */
+@keyframes marchio {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.entra {
+  animation: marchio 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+/* Il pallino dello stato apertura: pulsa piano, è l'unico elemento vivo. */
+@keyframes battito {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.battito {
+  animation: battito 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .entra,
+  .battito {
+    animation: none;
+  }
+}
