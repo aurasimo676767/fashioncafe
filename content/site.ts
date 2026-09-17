@@ -1,9 +1,8 @@
 /**
  * Contenuti del sito. Il menu sta in `content/menu.ts`.
  *
- * Indirizzo, telefono, Instagram e orari vengono dalla scheda Google e dal
- * profilo Instagram del locale: da confermare col proprietario prima di
- * considerarli definitivi. Il listino invece è ancora di esempio.
+ * Indirizzo, telefono, Instagram e orari sono quelli veri del locale.
+ * Il listino in `content/menu.ts` è invece ancora di esempio.
  */
 
 export const locale = {
@@ -31,7 +30,6 @@ export const info = {
   telefono: "+39 353 327 5367",
   instagram: "@fashioncafe_____",
   instagramUrl: "https://instagram.com/fashioncafe_____",
-  nota: "Recapiti e orari presi dalla scheda Google e da Instagram: da confermare.",
 };
 
 /** Ricerca su Google Maps dell'indirizzo, invece della home del servizio. */

@@ -56,7 +56,6 @@ export default function Info() {
             ))}
           </dl>
 
-          <p className="mt-6 text-sm text-grigio">{info.nota}</p>
         </div>
       </div>
     </section>
