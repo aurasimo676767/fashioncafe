@@ -14,6 +14,7 @@ export default function Info() {
                 {riga}
               </span>
             ))}
+            <span className="mt-1 block text-base text-grigio">{info.riferimento}</span>
           </p>
 
           <p className="mt-4">
